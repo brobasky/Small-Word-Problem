@@ -37,13 +37,11 @@ class MyQueue(deque):
         return self[0]
 
 
-#clean up your notes and ramblings but I think this is good otherwise
 def BFS(G,s):
     nodes=list(G.keys())
     degreecount=MyQueue([])
     #the length of this after calling the function proves that all 4039 nodes are connected to some degree
     visitednodes={s}
-    #visitednodes.append(s) bug moment
     q=MyQueue([])
     q.enqueue(s)
     #keeps track of nodes in the tier, starts with just s
@@ -68,12 +66,8 @@ def BFS(G,s):
     degreecount.dequeue()
     return degreecount
 
-#this takes a long time, but it works eventually
 def distanceDistribution(G):
-    '''
-    -call bfs on each node, then add the results to corresponding entries in master_list
-    -use a try except to append to the end if theres an index error
-    '''
+    #call bfs on each node, then add the results to corresponding entries in master_list
     count=0
     nodes=list(G.keys())
     master_list=[]
@@ -99,7 +93,6 @@ def distanceDistribution(G):
 
 def main():
     #running the full distanceDistribution function
-    #I included a screenshot of the terminal output in the folder since this takes a while to run
     graph=loadGraph('edges.txt')
     DD=distanceDistribution(graph)
     print(DD)
